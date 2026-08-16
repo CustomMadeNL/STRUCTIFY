@@ -3,7 +3,7 @@
 ## Title (≤140 chars)
 
 ```
-Business Operating System | Business Planner, CRM, Sales Pipeline, Content Planner & KPI Dashboard | Google Sheets Templates for Entrepreneurs
+Business Operating System | Business Planner, CRM, Sales Pipeline, Content Planner & KPI Dashboard | Google Sheets for Entrepreneurs
 ```
 
 ## Price
