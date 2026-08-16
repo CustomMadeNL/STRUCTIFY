@@ -42,6 +42,8 @@ so it can be versioned, reviewed and reused.
 │       ├── listing-payhip.md
 │       ├── delivery-guide.md
 │       └── LAUNCH_DAY_RUNBOOK.md ← click-by-click go-live for P-002
+│   └── P-003…P-007/               ← each: README, listing-etsy, listing-payhip,
+│                                     delivery-guide (copy ready, modules WIP)
 └── launch/
     ├── LAUNCH_CHECKLIST.md        ← step-by-step go-live checklist
     ├── POLICIES_AND_FAQ.md        ← refund, license & FAQ copy (Etsy + Payhip)
@@ -65,8 +67,8 @@ Pack** on Payhip, then Etsy, then repeat for P-002.
 |----|---------|----------|----------------------------|--------|
 | P-001 | Your AI Agent Pack | AI | €29 / €49 / €79 | Content ready, not live |
 | P-002 | Business Operating System | Business | €49 / €99 / €149 | Content ready, not live |
-| P-003 | All You Need System | Life | €29 / €49 / €79 | Idea |
-| P-004 | Money Control System | Finance | €19 / €39 / €59 | Idea |
-| P-005 | STRUCTIFY Kids | Kids | €19 / €29 / €49 | Idea |
-| P-006 | Family Operating System | Family | €29 / €49 / €79 | Idea |
-| P-007 | SHE-O Operating System | Life | €39 / €79 / €119 | Idea |
+| P-003 | All You Need System | Life | €29 / €49 / €79 | Copy ready, modules WIP |
+| P-004 | Money Control System | Finance | €19 / €39 / €59 | Copy ready, modules WIP |
+| P-005 | STRUCTIFY Kids | Kids | €19 / €29 / €49 | Copy ready, modules WIP |
+| P-006 | Family Operating System | Family | €29 / €49 / €79 | Copy ready, modules WIP |
+| P-007 | SHE-O Operating System | Life | €39 / €79 / €119 | Copy ready, modules WIP |

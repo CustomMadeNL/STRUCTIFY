@@ -9,11 +9,15 @@ One master module library, repackaged into commercial packs. Statuses:
 |----|------|----------|----------|------:|---------:|--------:|--------|
 | P-001 | Your AI Agent Pack | AI | Entrepreneurs / creators / professionals | €29 | €49 | €79 | Content ready |
 | P-002 | Business Operating System | Business | Entrepreneurs / freelancers / coaches | €49 | €99 | €149 | Content ready |
-| P-003 | All You Need System | Life | General | €29 | €49 | €79 | Idea |
-| P-004 | Money Control System | Finance | General | €19 | €39 | €59 | Idea |
-| P-005 | STRUCTIFY Kids | Kids | Parents | €19 | €29 | €49 | Idea |
-| P-006 | Family Operating System | Family | Families | €29 | €49 | €79 | Idea |
-| P-007 | SHE-O Operating System | Life | Women / female founders | €39 | €79 | €119 | Idea |
+| P-003 | All You Need System | Life | General | €29 | €49 | €79 | Copy ready · modules WIP |
+| P-004 | Money Control System | Finance | General | €19 | €39 | €59 | Copy ready · modules WIP |
+| P-005 | STRUCTIFY Kids | Kids | Parents | €19 | €29 | €49 | Copy ready · modules WIP |
+| P-006 | Family Operating System | Family | Families | €29 | €49 | €79 | Copy ready · modules WIP |
+| P-007 | SHE-O Operating System | Life | Women / female founders | €39 | €79 | €119 | Copy ready · modules WIP |
+
+**Status legend:** _Content ready_ = modules built + full launch copy; _Copy ready ·
+modules WIP_ = product spec, listings and delivery guide written, module Sheets
+still in `BUILD` per the module registry.
 
 ## Launch priority
 
