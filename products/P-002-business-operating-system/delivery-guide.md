@@ -103,9 +103,10 @@ Open **Start Here** first, then work through the modules in order.
 2. **Make your own copy** of each Google Sheet before editing.
 3. **Complete Positioning** — clarify who your business is for and why it matters.
 4. **Complete Offer Design** — turn your business idea into a sellable offer.
-5. **Set up the KPI Dashboard** — so you have one place to review growth from day one.
+5. **Complete Client Avatar** — get clear on exactly who you're selling to.
 
-Then add Content, Sales, CRM and Pipeline as you grow.
+Then keep going **in order** — Content → Sales → CRM → Pipeline — and use the
+**KPI Dashboard** weekly to review your growth.
 
 ---
 
