@@ -57,7 +57,8 @@ and side hustlers.
 - Customer delivery PDF: **BUILD**
 - Canva product mockups: **BUILD**
 
-## Listings
+## Listings & delivery
 
 - [Etsy listing copy](listing-etsy.md)
 - [Payhip listing copy](listing-payhip.md)
+- [Delivery guide](delivery-guide.md) — final copy, only file links to fill in

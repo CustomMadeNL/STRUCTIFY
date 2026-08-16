@@ -54,7 +54,8 @@ who want to use AI in a practical, structured way.
 - Customer delivery PDF: **BUILD** — draft exists (V2/V3) but still has `PASTE LINK HERE` placeholders
 - Canva product mockups: **BUILD**
 
-## Listings
+## Listings & delivery
 
 - [Etsy listing copy](listing-etsy.md)
 - [Payhip listing copy](listing-payhip.md)
+- [Delivery guide](delivery-guide.md) — final copy, only file links to fill in
