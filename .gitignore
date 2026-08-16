@@ -1,5 +1,16 @@
-cache
-cache-downloads
-inspector
-api
-source/inspector.html
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local working files (exported assets stay in Google Drive / Canva)
+*.tmp
+/tmp/
+_local/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+!docs/**/*.png
