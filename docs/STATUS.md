@@ -29,14 +29,17 @@ execution: finalize a delivery PDF, create mockups, and publish the listing.
 
 ## What's blocking launch 🔴
 
-From the Launch HQ queue (owner: Sophia) — every item still `BUILD`:
+**All launch copy is now written** (listings, delivery guides, policies/FAQ,
+runbooks). The remaining blockers are purely manual execution steps:
 
-1. **Delivery PDFs** — drafts still contain `PASTE LINK HERE` placeholders instead of real file links.
-2. **Canva mockups & product screenshots** — none created yet.
-3. **Etsy listings** — copy written (see `products/*/listing-etsy.md`), not published.
-4. **Payhip product pages** — copy written (see `products/*/listing-payhip.md`), not set up.
+1. **File links** — set the module Sheets to "Anyone with link → Viewer" and paste the links into the delivery guides (`[PASTE LINK]` markers).
+2. **Canva mockups & product screenshots** — none created yet (5 per product).
+3. **Publish on Payhip** — copy ready (`products/*/listing-payhip.md`), page not yet set up.
+4. **Publish on Etsy** — copy ready (`products/*/listing-etsy.md`), listing not yet created.
 5. **Purchase/download flow test** — not run.
-6. **Publish** — not done.
+
+➡️ Follow the click-by-click runbooks: `products/P-001-*/LAUNCH_DAY_RUNBOOK.md`
+then `products/P-002-*/LAUNCH_DAY_RUNBOOK.md`.
 
 ## Timeline note
 

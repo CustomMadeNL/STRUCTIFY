@@ -40,7 +40,8 @@ so it can be versioned, reviewed and reused.
 │       ├── README.md
 │       ├── listing-etsy.md
 │       ├── listing-payhip.md
-│       └── delivery-guide.md
+│       ├── delivery-guide.md
+│       └── LAUNCH_DAY_RUNBOOK.md ← click-by-click go-live for P-002
 └── launch/
     ├── LAUNCH_CHECKLIST.md        ← step-by-step go-live checklist
     ├── POLICIES_AND_FAQ.md        ← refund, license & FAQ copy (Etsy + Payhip)
