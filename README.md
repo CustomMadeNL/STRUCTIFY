@@ -33,13 +33,17 @@ so it can be versioned, reviewed and reused.
 │   ├── P-001-your-ai-agent-pack/
 │   │   ├── README.md             ← modules, pricing, customer flow
 │   │   ├── listing-etsy.md       ← ready-to-paste Etsy listing
-│   │   └── listing-payhip.md     ← ready-to-paste Payhip page
+│   │   ├── listing-payhip.md     ← ready-to-paste Payhip page
+│   │   ├── delivery-guide.md     ← customer delivery PDF copy
+│   │   └── LAUNCH_DAY_RUNBOOK.md ← click-by-click go-live for P-001
 │   └── P-002-business-operating-system/
 │       ├── README.md
 │       ├── listing-etsy.md
-│       └── listing-payhip.md
+│       ├── listing-payhip.md
+│       └── delivery-guide.md
 └── launch/
     ├── LAUNCH_CHECKLIST.md        ← step-by-step go-live checklist
+    ├── POLICIES_AND_FAQ.md        ← refund, license & FAQ copy (Etsy + Payhip)
     └── PINTEREST.md               ← pin titles & keywords
 ```
 

@@ -59,3 +59,5 @@ who want to use AI in a practical, structured way.
 - [Etsy listing copy](listing-etsy.md)
 - [Payhip listing copy](listing-payhip.md)
 - [Delivery guide](delivery-guide.md) — final copy, only file links to fill in
+- [Launch-day runbook](LAUNCH_DAY_RUNBOOK.md) — click-by-click to go live today
+- [Shop policies & FAQ](../../launch/POLICIES_AND_FAQ.md) — refund, license, FAQ copy
