@@ -32,6 +32,12 @@ The house layout, derived from the reference module:
 - Typically a narrow label column A + wider content column B; data modules
   (trackers, budgets) use as many columns as they need.
 - Formulas use Apps Script's comma syntax (locale-independent).
+- Data/tracker tabs get a block of blank working rows (`GROW_ROWS`) below the
+  seeded rows: per-row formulas (NET, REMAINING, DIFFERENCE, DONE, %) are guarded
+  with `IF(...="","",…)` and pre-filled across that range, and `SUM` totals cover
+  it — so values a user adds later still calculate and roll into the totals.
+- Column widths in the config are char-like and converted to pixels (`px_`), since
+  `setColumnWidth` takes pixels; money columns are formatted through the total row.
 
 ### Modules generated
 

@@ -28,6 +28,7 @@ var WIP_FOLDER_ID = '1YOVFHy--GQ_81U49b3oY8Fx_qwtXNCib'; // STRUCTIFY_WIP
 var FONT = 'Montserrat';                                  // brand font
 var C = { black:'#000000', white:'#ffffff' };
 var MONEY = '€ #,##0.00';
+var GROW_ROWS = 12;   // blank working rows added to formula/total tabs so new entries are covered
 
 // ======================================================== run entrypoints ==
 function buildAllModules() { MODULES.forEach(function (m) { buildModule_(m); }); }
@@ -66,6 +67,8 @@ function buildModule_(m) {
 
 // Fills a given sheet: header on ROW 1 (bold white on black, frozen),
 // data from row 2, Montserrat 10, no banding/borders — matches M-000.
+// Tabs with formulas/totals get GROW_ROWS blank working rows so per-row
+// formulas and SUM totals also cover entries the user adds later.
 function fillTab_(sh, t) {
   var nCols = t.headers.length;
   sh.getRange(1,1,1,nCols).setValues([t.headers])
@@ -74,21 +77,25 @@ function fillTab_(sh, t) {
   sh.setFrozenRows(1);
 
   var first = 2;
-  var rows = t.rows || [];
-  var last = first + rows.length - 1;
-  if (rows.length) {
-    sh.getRange(first,1,rows.length,nCols).setValues(pad_(rows,nCols))
-      .setFontFamily(FONT).setFontSize(10).setVerticalAlignment('top').setWrap(true);
-  }
+  var seeded = t.rows || [];
+  var grows = !!(t.rowFormulas || t.summaryRows);
+  var height = seeded.length + (grows ? GROW_ROWS : 0); // working range height
+  var last = first + height - 1;                        // last working row (may be blank)
 
-  // per-row formulas: [{col, tpl}]  tpl uses {r}
+  if (seeded.length) sh.getRange(first,1,seeded.length,nCols).setValues(pad_(seeded,nCols));
+  if (height > 0) sh.getRange(first,1,height,nCols)
+      .setFontFamily(FONT).setFontSize(10).setVerticalAlignment('top').setWrap(true);
+
+  // per-row formulas across the whole working range (guards live in the templates)
   (t.rowFormulas||[]).forEach(function (rf) {
     for (var r=first;r<=last;r++) sh.getRange(r,rf.col).setFormula(sub_(rf.tpl,{r:r}));
   });
 
-  // summary rows after a blank line; strings with {first}/{last} become formulas
+  // summary rows after a blank line; SUM ranges cover the whole working range
+  var summaryEnd = last;
   if (t.summaryRows && t.summaryRows.length) {
     var sr = last + 2;
+    summaryEnd = sr + t.summaryRows.length - 1;
     t.summaryRows.forEach(function (row, i) {
       for (var c=0;c<row.length;c++) {
         var v = row[c], cell = sh.getRange(sr+i, c+1);
@@ -100,13 +107,19 @@ function fillTab_(sh, t) {
     });
   }
 
-  if (t.widths) t.widths.forEach(function (w,i){ sh.setColumnWidth(i+1,w); });
-  if (t.moneyCols) t.moneyCols.forEach(function (c){ sh.getRange(first,c,Math.max(rows.length,1),1).setNumberFormat(MONEY); });
+  // widths are PIXELS in Apps Script — convert the char-like config values
+  if (t.widths) t.widths.forEach(function (w,i){ sh.setColumnWidth(i+1, px_(w)); });
+  // currency format down through the summary/total rows
+  if (t.moneyCols) t.moneyCols.forEach(function (c){
+    sh.getRange(first, c, summaryEnd - first + 1, 1).setNumberFormat(MONEY);
+  });
   return sh;
 }
 
 function pad_(rows,n){ return rows.map(function(r){ var a=r.slice(); while(a.length<n)a.push(''); return a; }); }
 function sub_(tpl,map){ return tpl.replace(/\{(\w+)\}/g,function(_,k){ return map[k]; }); }
+// char-like width -> readable pixel width (Apps Script setColumnWidth is pixels)
+function px_(w){ return Math.min(460, Math.max(46, Math.round(w * 7))); }
 
 // ================================================================ configs ==
 var MODULES = [
@@ -195,7 +208,8 @@ var MODULES = [
         ['No phone before bed',7,'','x','x','x','','x','x'],
         ['Plan tomorrow',5,'x','x','x','x','x','',''],
         ['Drink 2L water',7,'x','x','x','x','x','x','x']],
-      rowFormulas:[{col:10,tpl:'=COUNTA(C{r}:I{r})'},{col:11,tpl:'=ROUND(COUNTA(C{r}:I{r})/B{r}*100,0)'}] }]},
+      rowFormulas:[{col:10,tpl:'=IF($A{r}="","",COUNTA(C{r}:I{r}))'},
+        {col:11,tpl:'=IF(OR($A{r}="",$B{r}=""),"",ROUND(COUNTA(C{r}:I{r})/B{r}*100,0))'}] }]},
 
 { id:'M-045', short:'PERSONAL_CRM', name:'PERSONAL CRM', pack:'P-003 All You Need System',
   purpose:'Stay in touch with the people who matter instead of letting months slip by.',
@@ -250,7 +264,7 @@ var MODULES = [
       headers:['CATEGORY','PLANNED','ACTUAL','DIFFERENCE'], widths:[28,16,16,16], moneyCols:[2,3,4],
       rows:[['Housing',1200,1200,''],['Groceries',400,435,''],['Transport',150,120,''],
         ['Subscriptions',60,72,''],['Fun & eating out',200,240,''],['Savings',300,300,'']],
-      rowFormulas:[{col:4,tpl:'=B{r}-C{r}'}],
+      rowFormulas:[{col:4,tpl:'=IF($A{r}="","",B{r}-C{r})'}],
       summaryRows:[['TOTAL','=SUM(B{first}:B{last})','=SUM(C{first}:C{last})','=SUM(D{first}:D{last})']] }]},
 
 { id:'M-022', short:'EXPENSE_TRACKER', name:'EXPENSE TRACKER', pack:'P-004 Money Control System',
@@ -274,7 +288,7 @@ var MODULES = [
     { title:'CASHFLOW', subtitle:'Money in vs money out.',
       headers:['MONTH','INCOME','EXPENSES','NET'], widths:[16,16,16,16], moneyCols:[2,3,4],
       rows:[['June',3200,2900,''],['July',3400,3100,''],['August',3300,3050,'']],
-      rowFormulas:[{col:4,tpl:'=B{r}-C{r}'}],
+      rowFormulas:[{col:4,tpl:'=IF($A{r}="","",B{r}-C{r})'}],
       summaryRows:[['TOTAL','=SUM(B{first}:B{last})','=SUM(C{first}:C{last})','=SUM(D{first}:D{last})']] }]},
 
 { id:'M-024', short:'SAVINGS_SYSTEM', name:'SAVINGS SYSTEM', pack:'P-004 Money Control System',
@@ -285,7 +299,8 @@ var MODULES = [
     { title:'SAVINGS GOALS', subtitle:'Targets and progress.',
       headers:['GOAL','TARGET','SAVED','REMAINING','% DONE'], widths:[28,16,16,16,10], moneyCols:[2,3,4],
       rows:[['Emergency buffer',3000,1200,'',''],['Holiday',1500,600,'',''],['New laptop',1400,350,'','']],
-      rowFormulas:[{col:4,tpl:'=B{r}-C{r}'},{col:5,tpl:'=ROUND(C{r}/B{r}*100,0)'}] }]},
+      rowFormulas:[{col:4,tpl:'=IF($A{r}="","",B{r}-C{r})'},
+        {col:5,tpl:'=IF(OR($A{r}="",$B{r}=""),"",ROUND(C{r}/B{r}*100,0))'}] }]},
 
 { id:'M-025', short:'SUBSCRIPTION_TRACKER', name:'SUBSCRIPTION TRACKER', pack:'P-004 Money Control System',
   purpose:'Catch the recurring costs quietly draining your account.',
